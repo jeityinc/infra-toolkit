@@ -24,12 +24,12 @@ Pinned Linux/amd64 CI image for `jeity-infra`.
 Target image:
 
 ```text
-ghcr.io/jeity/infra-toolkit:latest
+ghcr.io/jeityinc/infra-toolkit:latest
 ```
 
 ## Publish through GitHub Actions
 
-Create this repository under the `jeity` GitHub organization and push to `master`.
+Create this repository under the `jeityinc` GitHub organization and push to `master`.
 
 The workflow uses the repository's built-in `GITHUB_TOKEN`, so no PAT is required
 for normal GitHub Actions publishing.
@@ -40,8 +40,8 @@ package visibility to **Public** if Bitbucket should pull it anonymously.
 ## Build locally
 
 ```bash
-docker build -t ghcr.io/jeity/infra-toolkit:latest .
-docker run --rm ghcr.io/jeity/infra-toolkit:latest infra-toolkit-verify
+docker build -t ghcr.io/jeityinc/infra-toolkit:latest .
+docker run --rm ghcr.io/jeityinc/infra-toolkit:latest infra-toolkit-verify
 ```
 
 ## Manual GHCR push
@@ -56,7 +56,7 @@ echo "$CR_PAT" | docker login ghcr.io \
   -u YOUR_GITHUB_USERNAME \
   --password-stdin
 
-docker push ghcr.io/jeity/infra-toolkit:latest
+docker push ghcr.io/jeityinc/infra-toolkit:latest
 ```
 
 ## Important: jeity-infra follow-up
@@ -99,16 +99,16 @@ The first successful release is `v1.0.0`. Subsequent releases become
 For example, `v1.0.4` publishes:
 
 ```text
-ghcr.io/jeity/infra-toolkit:1.0.4
-ghcr.io/jeity/infra-toolkit:1.0
-ghcr.io/jeity/infra-toolkit:latest
-ghcr.io/jeity/infra-toolkit:sha-<commit>
+ghcr.io/jeityinc/infra-toolkit:1.0.4
+ghcr.io/jeityinc/infra-toolkit:1.0
+ghcr.io/jeityinc/infra-toolkit:latest
+ghcr.io/jeityinc/infra-toolkit:sha-<commit>
 ```
 
 Downstream CI should pin the exact version:
 
 ```yaml
-image: ghcr.io/jeity/infra-toolkit:1.0.4
+image: ghcr.io/jeityinc/infra-toolkit:1.0.4
 ```
 
 Do not use `latest` for `jeity-infra`.
