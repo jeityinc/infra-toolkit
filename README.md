@@ -80,3 +80,35 @@ After publishing this image, update those scripts to:
 4. preserve `TF_PLUGIN_CACHE_DIR=/opt/terraform/plugin-cache`.
 
 That follow-up is what produces the large build-minute savings.
+
+## Releases
+
+A successful push to `master` automatically publishes a new patch release.
+
+The release workflow:
+
+1. finds the latest `vMAJOR.MINOR.PATCH` Git tag;
+2. increments the patch version;
+3. builds and publishes the GHCR image;
+4. publishes exact-version, major/minor, SHA, and `latest` tags;
+5. creates the corresponding annotated Git tag only after the image publish succeeds.
+
+The first successful release is `v1.0.0`. Subsequent releases become
+`v1.0.1`, `v1.0.2`, and so on.
+
+For example, `v1.0.4` publishes:
+
+```text
+ghcr.io/jeity/infra-toolkit:1.0.4
+ghcr.io/jeity/infra-toolkit:1.0
+ghcr.io/jeity/infra-toolkit:latest
+ghcr.io/jeity/infra-toolkit:sha-<commit>
+```
+
+Downstream CI should pin the exact version:
+
+```yaml
+image: ghcr.io/jeity/infra-toolkit:1.0.4
+```
+
+Do not use `latest` for `jeity-infra`.
