@@ -21,7 +21,7 @@ for command_name in "${required_commands[@]}"; do
 done
 
 terraform version -json \
-  | jq --exit-status '.terraform_version == "1.11.4"' >/dev/null
+  | jq --exit-status '.terraform_version == "1.16.5"' >/dev/null
 
 node --version | grep --quiet '^v22\.'
 tflint --version | grep --fixed-strings 'TFLint version 0.59.1' >/dev/null

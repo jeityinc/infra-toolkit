@@ -5,7 +5,7 @@ Pinned Linux/amd64 CI image for `jeity-infra`.
 ## Included
 
 - Node.js 22.20.0
-- Terraform 1.11.4
+- Terraform 1.16.5
 - TFLint 0.59.1
 - TFLint AWS ruleset 0.43.0
 - AWS CLI 2.37.3
